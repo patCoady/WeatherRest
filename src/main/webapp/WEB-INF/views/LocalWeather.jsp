@@ -25,13 +25,14 @@
 
 <table>
 	<tr>
-		<th>City</th><th>Clouds</th><th>Low</th><th>High</th>
+		<th>City</th><th>Clouds</th><th>Low</th><th>High</th><th>Description</th>
 	</tr>
 	<tr>
 		<td>${weather.name}</td>
 		<td>${weather.clouds.all}</td>
 		<td>${weather.main.temp_min}</td>
 		<td>${weather.main.temp_max}</td>
+		<%-- <td>${weather.weather.description}</td> --%>
 	</tr>
 </table>
 

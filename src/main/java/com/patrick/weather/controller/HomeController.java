@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.patrick.weather.entity.LocalWeather;
+import com.patrick.weather.entity.forecast.LocalForecast;
 
 /**
  * Handles requests for the application home page.
@@ -46,12 +47,8 @@ public class HomeController {
 		
 		return "home";
 	}
-	//@RequestParam("weatherJson") String weather)
 	@RequestMapping(value="weather", method = RequestMethod.POST)
 	public String doWeather_POST(Model model, @RequestParam("weatherJson") String weather) throws JsonProcessingException, IOException{
-		
-		/*RestTemplate restTemplate = new RestTemplate();*/
-		/*LocalWeather localWeather = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q=London", LocalWeather.class);*/
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		LocalWeather localWeather = null;
@@ -71,6 +68,29 @@ public class HomeController {
 
 		
 		return "LocalWeather";
+	}
+	
+	@RequestMapping(value="forecast", method = RequestMethod.POST)
+	public String doForecast_POST(Model model, @RequestParam("forecastJson") String forecast) throws JsonProcessingException, IOException{
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		LocalForecast localForecast = null;
+		
+	try {
+			localForecast = objectMapper.readValue(forecast, LocalForecast.class);
+		} catch (JsonParseException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		model.addAttribute("forecast", localForecast);
+
+		
+		return "LocalForecast";
 	}
 	
 }

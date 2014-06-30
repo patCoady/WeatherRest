@@ -23,9 +23,7 @@
 	</feildset>
 </div>
 
-<c:forEach items="${weather}" var="weather">
-	<p>${weather.temp}</p>
-</c:forEach>
+	<p>${weather.main.temp_min}</p>
 
 
 <script type="text/javascript">

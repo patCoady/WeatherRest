@@ -1,10 +1,14 @@
 package com.patrick.weather.controller;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -42,10 +46,21 @@ public class HomeController {
 	}
 	//@RequestParam("weatherJson") String weather)
 	@RequestMapping(value="weather", method = RequestMethod.POST)
-	public String doWeather_POST(Model model){
+	public String doWeather_POST(Model model, @RequestParam("weatherJson") String weather){
 		
-		RestTemplate restTemplate = new RestTemplate();
-		LocalWeather localWeather = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q=London", LocalWeather.class);
+		/*RestTemplate restTemplate = new RestTemplate();*/
+		/*LocalWeather localWeather = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q=London", LocalWeather.class);*/
+		ObjectMapper objectMapper = new ObjectMapper();
+		LocalWeather localWeather = null;
+		try {
+			localWeather = objectMapper.readValue(weather, LocalWeather.class);
+		} catch (JsonParseException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("weather", localWeather);
 		return "home";
 	}

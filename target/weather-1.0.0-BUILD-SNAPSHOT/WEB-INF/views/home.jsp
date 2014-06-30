@@ -23,6 +23,11 @@
 	</feildset>
 </div>
 
+<c:forEach items="${weather}" var="weather">
+	<p>${weather.temp}</p>
+</c:forEach>
+
+
 <script type="text/javascript">
      $('#ajax').click(function(){ 
          $.ajax({ 

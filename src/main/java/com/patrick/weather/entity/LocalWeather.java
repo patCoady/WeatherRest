@@ -1,59 +1,172 @@
 package com.patrick.weather.entity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.codehaus.jackson.annotate.JsonAnyGetter;
+import org.codehaus.jackson.annotate.JsonAnySetter;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LocalWeather {
-	private String weather;
-	private String description;
-	private float temp;
-	private int pressure;
-	private int humidity;
-	private int temp_min;
-	private int temp_max;
-	public String getWeather() {
-		return weather;
+	@JsonProperty("coord")
+	private Coord coord;
+	@JsonProperty("sys")
+	private Sys sys;
+	@JsonProperty("weather")
+	private List<Weather> weather = new ArrayList<Weather>();
+	@JsonProperty("base")
+	private String base;
+	@JsonProperty("main")
+	private Main main;
+	@JsonProperty("wind")
+	private Wind wind;
+	@JsonProperty("rain")
+	private Rain rain;
+	@JsonProperty("clouds")
+	private Clouds clouds;
+	@JsonProperty("dt")
+	private Integer dt;
+	@JsonProperty("id")
+	private Integer id;
+	@JsonProperty("name")
+	private String name;
+	@JsonProperty("cod")
+	private Integer cod;
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+	@JsonProperty("coord")
+	public Coord getCoord() {
+	return coord;
 	}
-	public void setWeather(String weather) {
-		this.weather = weather;
+
+	@JsonProperty("coord")
+	public void setCoord(Coord coord) {
+	this.coord = coord;
 	}
-	public String getDescription() {
-		return description;
+
+	@JsonProperty("sys")
+	public Sys getSys() {
+	return sys;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	@JsonProperty("sys")
+	public void setSys(Sys sys) {
+	this.sys = sys;
 	}
-	public float getTemp() {
-		return temp;
+
+	@JsonProperty("weather")
+	public List<Weather> getWeather() {
+	return weather;
 	}
-	public void setTemp(float temp) {
-		this.temp = temp;
+
+	@JsonProperty("weather")
+	public void setWeather(List<Weather> weather) {
+	this.weather = weather;
 	}
-	public int getPressure() {
-		return pressure;
+
+	@JsonProperty("base")
+	public String getBase() {
+	return base;
 	}
-	public void setPressure(int pressure) {
-		this.pressure = pressure;
+
+	@JsonProperty("base")
+	public void setBase(String base) {
+	this.base = base;
 	}
-	public int getHumidity() {
-		return humidity;
+
+	@JsonProperty("main")
+	public Main getMain() {
+	return main;
 	}
-	public void setHumidity(int humidity) {
-		this.humidity = humidity;
+
+	@JsonProperty("main")
+	public void setMain(Main main) {
+	this.main = main;
 	}
-	public int getTemp_min() {
-		return temp_min;
+
+	@JsonProperty("wind")
+	public Wind getWind() {
+	return wind;
 	}
-	public void setTemp_min(int temp_min) {
-		this.temp_min = temp_min;
+
+	@JsonProperty("wind")
+	public void setWind(Wind wind) {
+	this.wind = wind;
 	}
-	public int getTemp_max() {
-		return temp_max;
+
+	@JsonProperty("rain")
+	public Rain getRain() {
+	return rain;
 	}
-	public void setTemp_max(int temp_max) {
-		this.temp_max = temp_max;
+
+	@JsonProperty("rain")
+	public void setRain(Rain rain) {
+	this.rain = rain;
 	}
-	
+
+	@JsonProperty("clouds")
+	public Clouds getClouds() {
+	return clouds;
+	}
+
+	@JsonProperty("clouds")
+	public void setClouds(Clouds clouds) {
+	this.clouds = clouds;
+	}
+
+	@JsonProperty("dt")
+	public Integer getDt() {
+	return dt;
+	}
+
+	@JsonProperty("dt")
+	public void setDt(Integer dt) {
+	this.dt = dt;
+	}
+
+	@JsonProperty("id")
+	public Integer getId() {
+	return id;
+	}
+
+	@JsonProperty("id")
+	public void setId(Integer id) {
+	this.id = id;
+	}
+
+	@JsonProperty("name")
+	public String getName() {
+	return name;
+	}
+
+	@JsonProperty("name")
+	public void setName(String name) {
+	this.name = name;
+	}
+
+	@JsonProperty("cod")
+	public Integer getCod() {
+	return cod;
+	}
+
+	@JsonProperty("cod")
+	public void setCod(Integer cod) {
+	this.cod = cod;
+	}
+
+	@JsonAnyGetter
+	public Map<String, Object> getAdditionalProperties() {
+	return this.additionalProperties;
+	}
+
+	@JsonAnySetter
+	public void setAdditionalProperty(String name, Object value) {
+	this.additionalProperties.put(name, value);
+	}
 	
 	
 }

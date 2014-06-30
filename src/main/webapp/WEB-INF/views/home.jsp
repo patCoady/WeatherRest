@@ -16,8 +16,9 @@
 <button id="ajax">ajax call</button>
 <div>
 	<feildset>
-	<form name="weather" action="weather" method="post">
+	<form name="weather" action="weather" method="post" id= "findWeather" onsubmit ="fetch_weather()">
 		<input type = "hidden" name ="weatherJson" id = "weatherJson"/>
+		<input type = "text" name ="city" id ="cityName" required/>
 		<button type="submit">Save</button>
 	</form>
 	</feildset>
@@ -28,18 +29,37 @@
 
 <script type="text/javascript">
      $('#ajax').click(function(){ 
+    	 var weatherURL = "http://api.openweathermap.org/data/2.5/weather?q=".concat(document.getElementById("cityName").value);
+    	 alert(weatherURL);
          $.ajax({ 
              type: "GET",
              dataType: "charset=utf-8", //set dataType to be charset=utf-8 to see json
-             url: "http://api.openweathermap.org/data/2.5/weather?q=London",
+             url: weatherURL,
              success: function(data){
             	weatherJson.innerHTML = data;
             	$("#weatherJson").val(data);
+            	/* alert(data); */
              }
          });
     }); 
     
     </script>
+<!-- function fetch_weather() { -->
+<!-- <script type="text/javascript">
+$('#findWeather').submit(function() {
+    $.ajax({ 
+        type: "GET",
+        dataType: "charset=utf-8", //set dataType to be charset=utf-8 to see json
+        url: "http://api.openweathermap.org/data/2.5/weather?q=London",
+        success: function(data){
+       	weatherJson.innerHTML = data;
+       	$("#weatherJson").val(data);
+       	/* alert(data); */
+        }
+    });
+}); 
+    
+    </script> -->
 
 </body>
 </html>

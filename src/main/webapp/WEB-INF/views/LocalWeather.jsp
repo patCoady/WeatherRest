@@ -25,11 +25,10 @@
 
 <table>
 	<tr>
-		<th>City</th><th>Rain</th><th>Clouds</th><th>Low</th><th>High</th>
+		<th>City</th><th>Clouds</th><th>Low</th><th>High</th>
 	</tr>
 	<tr>
-		<td>${weather.sys.country}</td>
-		<td>${weather.main.temp_min}</td>
+		<td>${weather.name}</td>
 		<td>${weather.clouds.all}</td>
 		<td>${weather.main.temp_min}</td>
 		<td>${weather.main.temp_max}</td>

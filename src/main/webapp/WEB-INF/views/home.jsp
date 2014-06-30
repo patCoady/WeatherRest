@@ -23,7 +23,7 @@
 	</feildset>
 </div>
 
-	<p>${weather.main.temp_min}</p>
+	<%-- <p>${weather.main.temp_min}</p> --%>
 
 
 <script type="text/javascript">

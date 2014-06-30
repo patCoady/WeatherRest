@@ -70,7 +70,7 @@ public class HomeController {
 		model.addAttribute("weather", localWeather);
 
 		
-		return "home";
+		return "LocalWeather";
 	}
 	
 }

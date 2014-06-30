@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+
 <html>
 <head>
 	<title>Home</title>
@@ -14,6 +14,19 @@
 <p id ="test"></p>
 
 <button id="ajax">ajax call</button>
+<div>
+	<feildset>
+	<form name="weather" action="weather" method="post">
+		<input type = "hidden" name ="weatherJson" id = "weatherJson"/>
+		<button type="submit">Save</button>
+	</form>
+	</feildset>
+</div>
+
+<c:forEach items="${weather}" var="weather">
+	<p>${weather.temp}</p>
+</c:forEach>
+
 
 <script type="text/javascript">
      $('#ajax').click(function(){ 
@@ -22,21 +35,12 @@
              dataType: "json", //set dataType to be charset=utf-8 to see json
              url: "http://api.openweathermap.org/data/2.5/weather?q=London",
              success: function(data){
-            	test.innerHTML = data;
+            	weatherJson.innerHTML = data;
+            	$("#weatherJson").val(data);
              }
          });
     }); 
     
-/*     $('#ajax').click(function(){ 
-    	$.getJSON('http://api.openweathermap.org/data/2.5/weather?q=London', function(data) {
-            $.each(data, function(index, element) {
-                $('body').append($('<div>', {
-                    text: element.name
-                }));
-            });
-        });
-    }); */
-
     </script>
 
 </body>

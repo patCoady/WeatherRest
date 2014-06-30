@@ -55,14 +55,16 @@
 	</script>
 	<script type="text/javascript">
 		$('#forecastAjax').click(function() {
-							var weatherURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=London";
+							var weatherURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q="
+									.concat(document.getElementById("forecastCityName").value
+											.concat("&units=imperial"));
 							$.ajax({
 								type : "GET",
 								dataType : "charset=utf-8", //set dataType to be charset=utf-8 to see json
 								url : weatherURL,
 								success : function(data) {
 									/* weatherJson.innerHTML = data; */
-									alert(data);
+									
 									$("#forecastJson").val(data);
 								}
 							});
@@ -70,8 +72,8 @@
 	</script>
 	
 	<!-- function fetch_weather() { -->
-	<script type="text/javascript">
-		$('#findWeather')
+<!-- 	<script type="text/javascript">
+ 		$('#findWeather')
 				.submit(
 						function() {
 							var weatherURL = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&mode=json";
@@ -82,13 +84,13 @@
 								url : weatherURL,
 								success : function(data) {
 									/*  var txt = document.getElementById('weatherJson');
-									 txt.value = data; */
+									 txt.value = data; 
 									$("#weatherJson").val(data);
 									return true;
 								}
 							});
-						});
-	</script>
+						}); */
+	</script> -->
 
 </body>
 </html>

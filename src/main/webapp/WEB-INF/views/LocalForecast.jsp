@@ -12,12 +12,16 @@
 <h1>Forecast for ${forecast.city.name}</h1>
 <table>
 	<tr>
-		<th>City</th><th>Clouds</th><th>Low</th><th>High</th><th>Description</th>
+		<th>High</th><th>Low</th><th>rain</th><th>Humidity</th><th>Pressure</th>
 	</tr>
 	
 		<c:forEach items = "${forecast.list}" var ="day">
 		<tr>
-			<td>${day.temp.day}</td>
+			<td>${day.temp.max}</td>
+			<td>${day.temp.min}</td>
+			<td>${day.rain}</td>
+			<td>${day.humidity}</td>
+			<td>${day.pressure}</td>
 		</tr>
 		</c:forEach>
 			

@@ -48,7 +48,7 @@ public class HomeController {
 		return "home";
 	}
 	@RequestMapping(value="weather", method = RequestMethod.POST)
-	public String doWeather_POST(Model model, @RequestParam("weatherJson") String weather) throws JsonProcessingException, IOException{
+	public String doWeather_POST(Model model, @RequestParam("weatherJson") String weather){
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		LocalWeather localWeather = null;
@@ -71,7 +71,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="forecast", method = RequestMethod.POST)
-	public String doForecast_POST(Model model, @RequestParam("forecastJson") String forecast) throws JsonProcessingException, IOException{
+	public String doForecast_POST(Model model, @RequestParam("forecastJson") String forecast){
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		LocalForecast localForecast = null;
@@ -91,6 +91,11 @@ public class HomeController {
 
 		
 		return "LocalForecast";
+	}
+	@RequestMapping(value="map", method = RequestMethod.POST)
+	public String doMap_POST(Model model){
+		
+		return "map";
 	}
 	
 }

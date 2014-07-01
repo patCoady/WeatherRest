@@ -6,20 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Your Local Weather</title>
 
-<!-- <script type="text/javascript">
-     $('#ajax').click(function(){ 
-         $.ajax({ 
-             type: "GET",
-             dataType: "charset=utf-8", //set dataType to be charset=utf-8 to see json
-             url: "http://api.openweathermap.org/data/2.5/weather?q=London",
-             success: function(data){
-            	weatherJson.innerHTML = data;
-            	$("#weatherJson").val(data);
-             }
-         });
-    }); 
-    
-    </script> -->
 </head>
 <body>
 
@@ -35,6 +21,8 @@
 		<%-- <td>${weather.weather.description}</td> --%>
 	</tr>
 </table>
+
+
 
 
 </body>

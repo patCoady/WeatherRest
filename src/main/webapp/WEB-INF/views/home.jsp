@@ -35,14 +35,14 @@
 		</feildset>
 	</div>
 	<!--A map of the weather-->
-	<div>
+<!-- 	<div>
 		<feildset>
 		<form name = "map" action ="map" method="post">
 			<button type = "submit">Mr. Mappy</button>
 		</form>
 		</feildset>
 	
-	</div>
+	</div> -->
 
 
 
